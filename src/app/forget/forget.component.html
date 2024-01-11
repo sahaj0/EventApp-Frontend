@@ -1,0 +1,117 @@
+
+<app-header></app-header>
+<body>
+  
+  <div class="signup__container">
+    <!-- <div class="container__child signup__thumbnail">
+      
+      <div class="thumbnail__logo" >
+        <img src="https://media0.giphy.com/media/L0qTl8hl84EDly62J1/giphy.gif?cid=ecf05e47rzew6hx33softtmsmh4i72jpy7lw9xbpn6o3l3ho&ep=v1_gifs_search&rid=giphy.gif&ct=g" />
+         
+      </div>
+      <div class="thumbnail__content text-center">
+        <h2 class="heading--secondary">Are you ready to join the elite?</h2>
+        
+      </div>
+     
+      <div class="signup__overlay"></div>
+    </div> -->
+    
+    <div class="container__child signup__form">
+      <h2  style="color: black; text-align: center;">RESET YOUR PASSWORD</h2>
+
+      <form class="my-form" [formGroup]="resetForm" (ngSubmit)="onSubmit(resetForm.value)">
+        <!-- <div class="form-group">
+        
+          <label for="username">Name</label>
+          <input class="form-control"  formControlName="fname" name="fname" type="text" name="fname" id="fname" placeholder="Enter Name Here" required />
+        
+        </div> -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control"    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" formControlName="email" name="email" type="text" name="email" id="email" placeholder="email@gmail.com" required />
+          </div>
+          <div
+          *ngIf="
+          resetForm.controls['email'].invalid && (
+            resetForm.controls['email'].dirty ||
+            resetForm.controls['email'].touched)
+          "
+          
+        >
+        <span class="form-floating"  style="color: rgb(244, 10, 10);"  >Please Enter Valid Email!</span>
+          
+        </div>
+      
+       
+
+
+       
+        
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input class="form-control"  minlength="8"
+          maxlength="20"  formControlName="password"  type="password" name="password" id="password" placeholder="********" required />
+        </div>
+       
+        <div class="form-group">
+          <label for="passwordRepeat">Repeat Password</label>
+          <input  class="form-control"    minlength="8"
+          maxlength="20" formControlName="confirmpassword" name="confirmpassword" type="password"  id="passwordRepeat" placeholder="********" required />
+        </div>
+        <div
+        *ngIf="
+        resetForm.controls['password'].value !=
+        resetForm.controls['confirmpassword'].value && 
+        resetForm.controls['confirmpassword'].invalid &&
+         (resetForm.controls['password'].dirty ||
+         resetForm.controls['password'].touched)
+        " 
+        
+        class="alert"
+      >
+        <span  class="form-floating"   style="color: rgb(244, 10, 10);"
+          >Password and Confirm Password Should Match!</span
+        >
+      </div>
+        
+        
+        <div class="form-group">
+          <label for="email">Secret Question</label>
+          <select class="form-control"
+          formControlName="SecertQuestions"   name="SecertQuestions" (change)="change($event)"  required >
+  
+          <option for="email" selected hidden  >Enter Your Question</option>
+         <option  for="email" *ngFor="let w of Questions">{{w}}</option>
+         <!-- <option value="three">Purchase Insurance </option>
+         <option value="three">Request Claim </option>   -->
+        
+         </select>
+        </div>
+   
+
+        <div class="form-group">
+          <label for="email">Answer</label>
+          <input class="form-control"  placeholder="Enter Your Answer" formControlName="Answer"  name="Answer" required/>
+        </div>
+        
+
+  
+        <div class="m-t-lg">
+          <ul class="list-inline">
+            <li>
+              <button class="btn btn-primary" id="a1" type="submit"   > Next</button>  
+             
+
+            </li>
+            <li>
+             
+              <a class="signup__link" [routerLink]="['/login']">I am already a member</a>
+            </li>
+          </ul>
+        </div>
+      </form>  
+    </div>
+  </div>
+</body>
+<app-footer></app-footer>

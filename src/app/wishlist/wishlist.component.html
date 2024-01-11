@@ -1,0 +1,185 @@
+<app-header>
+
+</app-header>
+<!-- <main class="page-content" >
+  <div class="card" *ngFor="let event of fav?.events">
+    <div class="content" >
+      <img id="avatar" *ngFor="let e of event?.performers.slice(0,1)" src="{{e.image}}" alt="avatar" />
+      <h2 class="title">Venue:{{event?.venue.name}}</h2>
+      <p class="copy">Check out  </p>
+      <button class="btn"  (click)="Delete(event?.id)">Delete?</button>
+    </div>
+    <div> hello</div>
+  </div>
+ 
+ 
+</main> -->
+<body>
+  
+  <div class="container" *ngIf="fav?.events.length>0 ; else noEvents">
+  <!-- <div *ngIf="empty===1">
+    {{this.empty|json}}
+  </div> -->
+  
+    <div id="cards" *ngFor="let event of fav?.events">  
+      <figure class="card card--normal" *ngFor="let e of event?.performers.slice(0,1)">
+        <div class="card__image-container">
+          <img src="{{e.image}}" alt="Eevee" class="card__image">   
+        </div>
+        
+        <figcaption class="card__caption">
+          <h1 class="card__name">{{event.id}}</h1>
+      
+          <h3 class="card__type">
+            normal
+          </h3>
+      
+          <table class="card__stats">
+            <tbody><tr>
+              <th>Venue City</th>
+              <td>{{event.venue.city}}</td>
+            </tr>
+            <tr>
+              <th>Venue Country</th>
+              <td>{{event.venue.country}}</td>
+            </tr>
+            
+            
+            <tr>
+              <th>Venue State</th>
+              <td>{{event.venue.state}}</td>
+            </tr>
+      
+            <tr>
+              <th>UpComing Status</th>
+              <td>{{event.venue.has_upcoming_events}}</td>
+            </tr>
+            <tr>
+              <th>Performer</th>
+              <td>{{e.name}}</td>
+            </tr>
+            <tr>
+              <th>Type</th>  
+              <td>{{e.type}}</td>
+            </tr>
+          </tbody></table>
+          
+          <div class="card__abilities">
+           
+            <h4 class="card__ability">
+              <button class="btn" (click)="Delete(event?.id)">Remove From wishlist?</button>
+             
+            </h4>
+          </div>
+        </figcaption>
+      </figure>
+    
+      
+      </div>
+
+
+
+
+
+
+<!-- 
+      <div id="cards" *ngIf="empty===0" >  
+{{this.empty|json}}
+        <figure class="card card--normal" >
+          <div class="card__image-container">
+            <img src="" alt="Eevee" class="card__image">   
+          </div>
+          
+          <figcaption class="card__caption">
+            <h1 class="card__name"></h1>
+        
+            <h3 class="card__type">
+              normal
+            </h3>
+        
+            <table class="card__stats">
+              <tbody><tr>
+                <th>Venue City</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>Venue Country</th>
+                <td></td>
+              </tr>
+              
+              <tr>
+                <th>Venue State</th>
+                <td></td>
+              </tr>
+        
+              <tr>
+                <th>UpComing Status</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>Performer</th>
+                <td></td>
+              </tr>
+              <tr>
+                <th>Type</th>  
+                <td></td>
+              </tr>
+            </tbody></table>
+            
+            <div class="card__abilities">
+             
+              <h4 class="card__ability">
+                <button class="btn">Remove From wishlist?</button>
+               
+              </h4>
+            </div>
+          </figcaption>
+        </figure>
+        
+       
+        
+       
+      
+        
+        
+        </div> -->
+  </div>
+  <ng-template #noEvents>
+
+    <div id="container-empty">
+       
+      <div id="error-box">
+          <div class="dot"></div>
+          <div class="dot two"></div>
+          <div class="face2">
+              <div class="eye"></div>
+              <div class="eye right"></div>
+              <div class="mouth sad"></div>
+          </div>
+          <div class="shadow move"></div>
+          <div class="message">
+              <h1 class="alert" >Your Wishlist is Empty!</h1>
+              <p style="font-size: large;">Nothing to show</p>
+          </div>
+          <button class="button-box" [routerLink]="['']">
+              <h1 class="red">add to wishlist click here</h1>
+          </button>
+      </div>
+  </div>
+
+   
+    </ng-template>
+  
+</body>
+
+  
+  
+
+    <app-footer></app-footer>
+
+
+
+
+
+
+

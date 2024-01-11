@@ -1,0 +1,57 @@
+
+
+
+
+<div> 
+
+    <mat-toolbar class="nav1">
+
+      <button  mat-button routerLink="/">
+      <mat-icon>event</mat-icon> 
+        <span class="header" >Event </span>
+         </button>
+  
+       
+      <span class="fill-remaining-space"></span>
+      <div  fxLayout="row" fxShow="false" fxShow.gt-sm>
+
+        <button  mat-button>
+         
+            <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;" > Welcome Back
+              {{current_user}}  </span>
+              <mat-icon   *ngIf="loginSer.isLoggedIn()" (click)="show()"> account_circle </mat-icon>
+             </button>
+         
+          <!-- <a class="nav-link"  *ngIf="!loginSer.isLoggedIn()" [routerLink]="['/login']">User Login</a> -->
+          <!-- <button  class="btn"  mat-button  [routerLink]="['/register']" >Register</button>
+          <button class="btn"  mat-button  [routerLink]="['/login']" >Login</button> -->
+      </div>
+      <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+       <mat-icon>menu</mat-icon>
+      </button>
+  
+  </mat-toolbar>
+  <mat-menu  x-position="before" #menu="matMenu">
+      <button  class="nav1"  [routerLink]="['/register']" mat-menu-item >Register
+        <mat-icon>supervisor_account</mat-icon>
+      </button>
+      <button  class="nav1"  *ngIf="this.loginSer.isLoggedIn()" (click)="show()" mat-menu-item >profile
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <button  class="nav1" [routerLink]="['/login']"  mat-menu-item >Login
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+      <button class="nav1" *ngIf="this.loginSer.isLoggedIn() && this.loginSer.isAdmin()"  mat-menu-item  [routerLink]="['/allUser']" >
+        Show All User
+        <mat-icon>restore</mat-icon></button>
+      <button  class="nav1"  *ngIf="this.loginSer.isLoggedIn()"  [routerLink]="['/wishlist']" mat-menu-item>
+        Show WishList <mat-icon>receipt</mat-icon>
+       </button>
+   
+      <button class="nav1"  *ngIf="this.loginSer.isLoggedIn()"  mat-menu-item  (click)="logout()"  mat-menu-item  >
+        Logout
+        <mat-icon>logout</mat-icon></button>
+     
+  </mat-menu>
+
+  </div>
